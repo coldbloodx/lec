@@ -1,11 +1,8 @@
-OBJS = $(shell allfile=''; for file in `ls`; do allfile="$${allfile} `echo $$file |cut -d '.' -f 1`"; done; echo $$allfile)
-OBJ = $(OBJS:Makefile=)
+OBJS = $(shell allfile=''; for file in `ls *.c *.cpp 2>/dev/null`; do allfile="$${allfile} `echo $$file |cut -d '.' -f 1`"; done; echo $$allfile)
 
 .PHONY: all
 
 all: $(OBJS)
 
-$(OBJ):
-
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS) core output
