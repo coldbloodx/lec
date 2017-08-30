@@ -1,0 +1,25 @@
+0.put all your source file into a folder and change to the folder in terminal.
+1.run "autoscan" in terminal
+add two lines
+
+AM_INIT_AUTOMAKE(programname, version)
+AC_OUTPUT([Makefile])
+
+
+first line should be changed according your name
+1.5 run "mv configure.scan configure.in"
+
+2.run "aclocal"
+3.run "autoconf"
+4.run "autoheader"
+
+5.create  Makefile.am, add following lines:
+
+AUTOMAKE_OPTIONS=foreign
+bin_PROGRAMS=your-program-name
+program-name_SOURCES=all your source files separated by space
+
+6.run "automake --add-missing"
+7.run "./configure"
+8.run "make"
+

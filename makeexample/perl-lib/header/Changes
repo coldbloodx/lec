@@ -1,0 +1,6 @@
+Revision history for Perl extension Libop.
+
+0.01  Fri Oct  5 20:49:14 2012
+	- original version; created by h2xs 1.23 with options
+		libop.h
+

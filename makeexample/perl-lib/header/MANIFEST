@@ -1,0 +1,11 @@
+Changes
+Libop.xs
+Makefile.PL
+MANIFEST
+ppport.h
+README
+t/Libop.t
+fallback/const-c.inc
+fallback/const-xs.inc
+lib/Libop.pm
+/usr/lib/libop.so

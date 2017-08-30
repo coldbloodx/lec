@@ -1,0 +1,24 @@
+#pay attention to the following lines
+LIBS = operation.a
+CPP = g++ -g
+LIBDIR = lib
+RM = rm -f
+CP = cp
+AR_FLAGS = rv
+OBJS = $(LIBDIR)/add.o $(LIBDIR)/sub.o $(LIBDIR)/mul.o $(LIBDIR)/div.o
+all = all.sta
+
+$(all): main.o $(LIBS)
+	g++ -o $@ $^
+
+$(LIBS): $(OBJS)
+	ar -rv $@ $(OBJS)
+
+clean:
+	$(RM) $(OBJS) $(LIBS) $(all) main.o
+	
+install:main
+	${CP} main ~/
+
+uninstall:
+	$(RM) ~/main

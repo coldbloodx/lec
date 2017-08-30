@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+vnc=`which vnc4server`
+
+function start()
+{
+    username_prefix=pub
+    for((i=1;i<9;i++))
+    do
+        username=$username_prefix$i
+        rm -f /home/$username/.vnc/{*.pid,*.log}
+        rm -f "/tmp/.X11-unix/X$i"
+        rm -f "/tmp/.X$i-lock"
+        sleep 1
+        su $username -c vnc4server :$i
+    done
+}
+
+case "$1" in
+start)
+    start
+  ;;
+stop)
+    pkill -9 Xvnc4
+  ;;
+status)
+  vpn_pid=`pgrep Xvnc4`
+  if [ -z "$vpn_pid" ]; then
+      echo "vpn service is not start"
+  else
+      echo -e "vpn is running, pids:\n$vpn_pid"
+  fi
+  ;;
+restart)
+    pkill -9 Xvnc4
+    sleep 3
+    start
+  ;;
+*)
+  echo "Usage: vncserver(start|stop|status|restart)"
+  exit 1
+  ;;
+esac

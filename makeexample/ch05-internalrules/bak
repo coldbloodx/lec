@@ -1,0 +1,41 @@
+#the file demostrates macro in make file
+#macro is a variable, which could remove hard code and invoked by ${variablename}
+
+#variables
+
+#which compiler
+CPP = g++
+
+#rm command
+RM = rm -f
+
+#cp command
+CP = cp
+
+#where source files are put
+SRCDIR = lib
+
+#compiler switches
+CPPDEBUG = -g -Wall -ansi
+
+main: addition.o subtraction.o multiplication.o division.o main.o
+	$(CPP) -o main addition.o subtraction.o multiplication.o division.o main.o
+main.o: main.cpp
+	$(CPP) -c main.cpp
+addition.o: $(SRCDIR)/addition.cpp $(SRCDIR)/addition.h
+	$(CPP) -c $(SRCDIR)/addition.cpp
+subtraction.o: $(SRCDIR)/subtraction.cpp $(SRCDIR)/subtraction.h
+	$(CPP) -c $(SRCDIR)/subtraction.cpp
+multiplication.o: $(SRCDIR)/multiplication.cpp $(SRCDIR)/multiplication.h
+	$(CPP) -c $(SRCDIR)/multiplication.cpp
+division.o: $(SRCDIR)/division.cpp $(SRCDIR)/division.h
+	$(CPP) -c $(SRCDIR)/division.cpp
+	
+clean:
+	$(RM) *.o main 
+	
+install: main
+	${CP} main ~/
+
+uninstall:
+	$(RM) ~/main

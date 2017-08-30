@@ -1,0 +1,91 @@
+0909
+
+1.Variable VPATH 
+In some huge projects, there are lots of source files. Usually we catagorized these files into different directory. When 'make' parsing dependency for a file, you could add path to a file. But the best way to handle this problem is tell 'make' a path, and let 'make' search files in the path automatically.
+
+The variable 'VPATH' is just for this goal. if user did not specify 'VPATH', 'make' will search files in current directory, but if the variable is declared, 'make' will search additional directories specified in 'VPATH', if source file can not be found in current directory.
+
+VPATH = src:../header
+
+Above line tells make to search source files from ./src and ../header.
+
+Another way to set search path is keyword 'vpath', there are three ways to address additional directories for the keyword.
+
+a. vpath <pattern> <directories>
+This form will set search directories for specified file name pattern.
+
+b. vpath <pattern>
+This form will clear search directories for specified file name pattern.
+
+c. vpath
+This form will clear all additional search directories. 
+
+here are some examples for above idiom
+a. 
+vpath %.h ../headers
+%.h matches all files ends with .h
+
+b.
+vpath %.c foo
+vpath % blish
+vpath %.c bar
+%.c mateches all .c files, and the second % followes previous pattern.
+
+2. keyword .PHONY
+If a target has a same name with a file, when we make the target, 'make' will report the target is update-to-date, to avoid the situation, we must specify the target with '.PHONY'. like following:
+
+.PHONY: clean
+then whether there is file named 'clean' or not, 'make' will execute its following command.
+
+3. multi targets
+We can specify multi targets for one rules, like following:
+
+bigoutput littleoutput: test.g
+        generate test.g -$(subst output..$@) > $@
+
+$@ is a make automation variable, which will fetch targets in target set one by one.
+
+4. static mode
+grammar
+<targets ...>: <target-pattern>: <prereq-patterns ...>
+targets defines a series of target, it can contain wildcat, in a whole word, it defines a set for all targets.
+target-pattern defines the pattern for all target
+prereq-patterns is pattern for dependency 
+
+here is an example for the static mode 
+
+objects = foo.o bar.o
+
+all: $(objects)
+
+$(objects): %o : %c
+             $(CC) -c $(CFLAGS) $< -o $@
+
+5. gcc/g++ -MM
+The option '-MM' for gcc/g++ can deduct dependency automatically. Here is an example:
+
+leo@leo-playground:/data/code/linux-examples/makexample/ch03-auto-deduce$ g++ -MM main.cpp 
+main.o: main.cpp addition.h subtraction.h multiplication.h division.5. gcc/g++ -MM
+
+6. make parameters
+a. -p 
+Show internal macroes and rules.
+
+b. -i
+keep-going if error encountered.
+
+c. -k
+if some rules got errors, ignore the rules keeping making next rules.
+
+d. -n
+test make file, instead of making real objects.
+
+7. make recursively
+If a project is divided into several components, every component is placed in a directory, and every component have a make file in its directory, then user can write a make file to make all components with one shot. please see the makefile for this project.
+
+
+
+
+
+
+

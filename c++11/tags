@@ -1,0 +1,62 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ASM_SRCS	ex04-shared_ptr/Debug/sources.mk	/^ASM_SRCS := $/;"	m
+CC_DEPS	ex04-shared_ptr/Debug/sources.mk	/^CC_DEPS := $/;"	m
+CC_SRCS	ex04-shared_ptr/Debug/sources.mk	/^CC_SRCS := $/;"	m
+CPP_DEPS	ex04-shared_ptr/Debug/sources.mk	/^CPP_DEPS := $/;"	m
+CPP_SRCS	ex04-shared_ptr/Debug/sources.mk	/^CPP_SRCS := $/;"	m
+CXX_DEPS	ex04-shared_ptr/Debug/sources.mk	/^CXX_DEPS := $/;"	m
+CXX_SRCS	ex04-shared_ptr/Debug/sources.mk	/^CXX_SRCS := $/;"	m
+C_DEPS	ex04-shared_ptr/Debug/sources.mk	/^C_DEPS := $/;"	m
+C_SRCS	ex04-shared_ptr/Debug/sources.mk	/^C_SRCS := $/;"	m
+C_UPPER_DEPS	ex04-shared_ptr/Debug/sources.mk	/^C_UPPER_DEPS := $/;"	m
+C_UPPER_SRCS	ex04-shared_ptr/Debug/sources.mk	/^C_UPPER_SRCS := $/;"	m
+DefaultAndDelete	ex05-default_and_deleted/ut.cpp	/^class DefaultAndDelete $/;"	c	file:
+DelegateConstruct	ex08-delegate_construct/ut.cpp	/^    DelegateConstruct (int int_param):int_member(int_param){};$/;"	f	class:DelegateConstruct
+DelegateConstruct	ex08-delegate_construct/ut.cpp	/^class DelegateConstruct $/;"	c	file:
+EXECUTABLES	ex04-shared_ptr/Debug/sources.mk	/^EXECUTABLES := $/;"	m
+FirstClass	ex07-rvalue_reference/ut.cpp	/^   FirstClass (const FirstClass& fc) $/;"	f	class:FirstClass
+FirstClass	ex07-rvalue_reference/ut.cpp	/^   FirstClass (const FirstClass&& fc)$/;"	f	class:FirstClass
+FirstClass	ex07-rvalue_reference/ut.cpp	/^class FirstClass $/;"	c	file:
+InitTest	ex03-unified_init_grammar/ut.cpp	/^InitTest::InitTest(int int_param,char char_param):$/;"	f	class:InitTest
+InitTest	ex03-unified_init_grammar/ut.cpp	/^class InitTest $/;"	c	file:
+LIBS	ex04-shared_ptr/Debug/objects.mk	/^LIBS :=$/;"	m
+OBJS	ex04-shared_ptr/Debug/sources.mk	/^OBJS := $/;"	m
+OBJ_SRCS	ex04-shared_ptr/Debug/sources.mk	/^OBJ_SRCS := $/;"	m
+O_SRCS	ex04-shared_ptr/Debug/sources.mk	/^O_SRCS := $/;"	m
+RM	ex04-shared_ptr/Debug/makefile	/^RM := rm -rf$/;"	m
+SUBDIRS	ex04-shared_ptr/Debug/sources.mk	/^SUBDIRS := \\$/;"	m
+S_UPPER_SRCS	ex04-shared_ptr/Debug/sources.mk	/^S_UPPER_SRCS := $/;"	m
+SecondClass	ex07-rvalue_reference/ut.cpp	/^    SecondClass (const SecondClass& sc):$/;"	f	class:SecondClass
+SecondClass	ex07-rvalue_reference/ut.cpp	/^    SecondClass (const SecondClass&& sc):$/;"	f	class:SecondClass
+SecondClass	ex07-rvalue_reference/ut.cpp	/^class SecondClass $/;"	c	file:
+USER_OBJS	ex04-shared_ptr/Debug/objects.mk	/^USER_OBJS :=$/;"	m
+char_member	ex03-unified_init_grammar/ut.cpp	/^    char char_member;$/;"	m	class:InitTest	file:
+double_array	ex03-unified_init_grammar/ut.cpp	/^    double double_array[2];$/;"	m	class:InitTest	file:
+fc_member	ex07-rvalue_reference/ut.cpp	/^    FirstClass fc_member;$/;"	m	class:SecondClass	file:
+fun	ex06-nullptr/ut.cpp	/^void fun(char* charparm = "null ptr")$/;"	f
+fun	ex06-nullptr/ut.cpp	/^void fun(int int_param = 0)$/;"	f
+int_array	ex03-unified_init_grammar/ut.cpp	/^    int int_array[5];$/;"	m	class:InitTest	file:
+int_member	ex03-unified_init_grammar/ut.cpp	/^    int int_member;$/;"	m	class:InitTest	file:
+int_member	ex05-default_and_deleted/ut.cpp	/^    static const int int_member = 0;$/;"	m	class:DefaultAndDelete	file:
+int_member	ex08-delegate_construct/ut.cpp	/^    int int_member;$/;"	m	class:DelegateConstruct	file:
+main	ex01-lambda/ut.cpp	/^int main()$/;"	f
+main	ex02-auto_and_decltype/ut.cpp	/^int main()$/;"	f
+main	ex03-unified_init_grammar/ut.cpp	/^int main()$/;"	f
+main	ex04-shared_ptr/dest/shared-ptr.cpp	/^int main()$/;"	f
+main	ex04-shared_ptr/src (copy)/shared-ptr.cpp	/^int main()$/;"	f
+main	ex04-shared_ptr/src/shared-ptr.cpp	/^int main()$/;"	f
+main	ex05-default_and_deleted/ut.cpp	/^int main()$/;"	f
+main	ex06-nullptr/ut.cpp	/^int main()$/;"	f
+main	ex07-rvalue_reference/ut.cpp	/^int main()$/;"	f
+main	ex08-delegate_construct/ut.cpp	/^int main()$/;"	f
+output	ex03-unified_init_grammar/ut.cpp	/^void InitTest::output()$/;"	f	class:InitTest
+output	ex05-default_and_deleted/ut.cpp	/^void DefaultAndDelete::output()$/;"	f	class:DefaultAndDelete
+output	ex08-delegate_construct/ut.cpp	/^    void output(){cout<<"int_param:"<<int_member<<endl;};$/;"	f	class:DelegateConstruct
+src	ex05-default_and_deleted/ut.cpp	/^    DefaultAndDelete& operator =(const DefaultAndDelete& src) = delete;$/;"	m	class:DefaultAndDelete	file:
+src	ex05-default_and_deleted/ut.cpp	/^    DefaultAndDelete(const DefaultAndDelete& src) = delete;$/;"	m	class:DefaultAndDelete	file:
+~InitTest	ex03-unified_init_grammar/ut.cpp	/^InitTest::~InitTest()$/;"	f	class:InitTest
