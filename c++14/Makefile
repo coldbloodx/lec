@@ -2,6 +2,8 @@ OBJS = $(shell allfile=''; for file in `ls *.c *.cpp 2>/dev/null`; do allfile="$
 
 .PHONY: all
 
+CXXFLAGS = -std=c++14
+
 all: $(OBJS)
 
 clean:

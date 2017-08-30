@@ -1,6 +1,6 @@
 #include <errno.h>
 #include <fcntl.h>
-#include <linux/ext2_fs.h>
+#include <ext2fs/ext2fs.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/ioctl.h>

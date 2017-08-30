@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <sys/time.h>
+#include <unistd.h>
 #include <pthread.h>
 #include <errno.h>
 #include <cstdlib>

@@ -82,10 +82,3 @@ test make file, instead of making real objects.
 
 7. make recursively
 If a project is divided into several components, every component is placed in a directory, and every component have a make file in its directory, then user can write a make file to make all components with one shot. please see the makefile for this project.
-
-
-
-
-
-
-

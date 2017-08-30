@@ -10,6 +10,8 @@
 #include <pthread.h>
 #include <cstdlib>
 #include <sys/time.h>
+#include <unistd.h>
+
 #define THREAD_NUMBER 2
 using namespace std;
 

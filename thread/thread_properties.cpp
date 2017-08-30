@@ -7,6 +7,7 @@
 //============================================================================
 
 #include <iostream>
+#include <unistd.h>
 #include <pthread.h>
 #include <cstdlib>
 using namespace std;
