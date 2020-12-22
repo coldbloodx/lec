@@ -9,9 +9,9 @@ import "bytes"
 import "github.com/davecgh/go-xdr/xdr2"
 
 type data struct {
-    stream    [4]byte ;
+    stream    []byte ;
     clusters  string ;
-    ncluster  int    ;
+    ncluster  int32    ;
 }
 
 
@@ -42,15 +42,15 @@ func main(){
         nbytes, err := conn.Read(buf[0:1000]);
 
         fmt.Printf("read %d bytes\n", nbytes);
-        fmt.Printf("buf: %+v", buf);
+        fmt.Printf("buf: %+v\n", buf);
 
         var mydata data;
 
         decoder := xdr.NewDecoder(bytes.NewReader(buf[0:1000]));
         
-        aaa, _, err := decoder.DecodeFixedOpaque(4);
-        /*bbb, _, err := decoder.DecodeString();*/
-        /*ccc, _, err := decoder.DecodeUint();  */
+        aaa, _, err := decoder.DecodeOpaque();
+        bbb, _, err := decoder.DecodeString();
+        ccc, _, err := decoder.DecodeUint();  
 
         if err != nil {
             fmt.Println(err);
@@ -58,11 +58,33 @@ func main(){
             os.Exit(-1);
         }
         
-        fmt.Printf("aaa: %+v", aaa);
-        /*fmt.Printf("bbb: %+v", bbb);*/
-        /*fmt.Printf("bbb: %+v", ccc);*/
+        fmt.Printf("aaa: %+v\n", aaa);
+        fmt.Printf("bbb: %+v\n", bbb);
+        fmt.Printf("ccc: %+v\n", ccc);
 
-        fmt.Printf("mydata: %+v", mydata);
+        decoder1 := xdr.NewDecoder(bytes.NewReader(buf[0:1000]));
+
+
+        mydata.stream, _, err = decoder1.DecodeOpaque();
+        mydata.clusters, _, err = decoder1.DecodeString();
+        mydata.ncluster, _, err = decoder1.DecodeInt();  
+
+        fmt.Printf("mydata: %+v\n", mydata);
+        
+        var mydata1 data;
+        ncount, err := xdr.Unmarshal(bytes.NewReader(buf[0:1000]), &mydata1);
+        //bytesRead, err := xdr.Unmarshal(bytes.NewReader(encodedData), &h)
+
+        if err != nil {
+            fmt.Println(err);
+            defer sock.Close();
+            os.Exit(-1);
+        }
+        fmt.Printf("mydata1: %+v, ncount: %d\n", mydata1, ncount);
+        
+
+
+        
 
 
 

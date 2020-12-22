@@ -16,7 +16,7 @@ int MAX_DATA_SIZE = 10000;
 int PORT= 8080;
 
 typedef struct {
-    char stream[4];
+    char stream[8];
     char* clusters;
     int   ncluster;
 } data;
@@ -34,7 +34,12 @@ int main()
     char* clusters = "cluster1 clsuter2 cluster3";
     char* sp = NULL;
     int ncluster = 3;
-    XDR  xdr = {0};
+    XDR  encoder = {0};
+    XDR  decoder = {0};
+
+
+    data newdata = {0};
+
 
     int rc = 0;
 
@@ -42,29 +47,55 @@ int main()
     mydata.stream[1] = 'b';
     mydata.stream[2] = 'c';
     mydata.stream[3] = 'd';
+    mydata.stream[4] = 'd';
+    mydata.stream[5] = 'd';
+    mydata.stream[6] = 'd';
+    mydata.stream[7] = 'd';
 
     mydata.ncluster = ncluster;
     mydata.clusters = clusters;
 
-    xdrmem_create(&xdr,  buffer, sizeof(buffer), XDR_ENCODE);
+    xdrmem_create(&encoder,  buffer, sizeof(buffer), XDR_ENCODE);
 
     int streamlen = sizeof(mydata.stream);
     sp = (char*)&mydata.stream;
-    rc = xdr_bytes(&xdr, (char**)&sp, &streamlen, streamlen);             
+    rc = xdr_bytes(&encoder, (char**)&sp, &streamlen, streamlen);             
 
     if ( !rc ) {                                                              
         printf("encode stream fail\n");                                       
     }                                                                         
 
-    rc = xdr_string(&xdr, &mydata.clusters, strlen(mydata.clusters));
+    rc = xdr_string(&encoder, &mydata.clusters, strlen(mydata.clusters));
     if ( !rc ) {
         printf("encode clusters fail\n");
     }
 
-    rc = xdr_int(&xdr, &mydata.ncluster);
+    rc = xdr_int(&encoder, &mydata.ncluster);
     if ( !rc ) {
         printf("encode nclusters fail\n");
     }
+    printf("my: clusters: %s, nclusters: %d\n", mydata.clusters, mydata.ncluster);
+
+    
+    xdrmem_create(&decoder,  buffer, sizeof(buffer), XDR_DECODE);
+    sp = (char*)&newdata.stream;
+    rc = xdr_bytes(&decoder, (char**)&sp , &streamlen, streamlen);
+
+    if ( !rc ) {                                                              
+        printf("decode stream fail\n");                                       
+    }                                                                         
+
+    rc = xdr_string(&decoder, &newdata.clusters, strlen(mydata.clusters));
+    if ( !rc ) {
+        printf("decode clusters fail\n");
+    }
+
+    rc = xdr_int(&decoder, &newdata.ncluster);
+    if ( !rc ) {
+        printf("decode nclusters fail\n");
+    }
+
+    printf("newdata: clusters: %s, nclusters: %d\n", newdata.clusters, newdata.ncluster);
 
 
     if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
